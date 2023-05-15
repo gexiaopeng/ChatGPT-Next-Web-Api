@@ -39,7 +39,7 @@ export async function requestOpenai(req: NextRequest) {
    console.log("[requestOpenai token] ",  key);
   let body=await res.body;
   console.log("[requestOpenai status] ",  res.status,res.statusText,openaiPath);
-  console.log("[requestOpenai body]{"+body+"}");
+  console.log("[requestOpenai body]{"+JSON.stringify(body)+"}");
   const modifiedRes = await new Response(await body, { status: res.status, statusText: res.statusText, headers: newHeaders });
   return modifiedRes;
 }
