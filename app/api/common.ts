@@ -20,8 +20,8 @@ export async function requestOpenai(req: NextRequest) {
     baseUrl = `${PROTOCOL}://${baseUrl}`;
   }
 
-  console.log("[Proxy] ", openaiPath);
-  console.log("[Base Url]", baseUrl);
+  console.log("[Proxy,Base] {"+openaiPath+"},{"+baseUrl+"}");
+  console.log("[Url]", `${baseUrl}/${openaiPath}`);
   let res=  await  fetch(`${baseUrl}/${openaiPath}`, {
     headers: {
       "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export async function requestOpenai(req: NextRequest) {
   // console.log("[requestOpenai headers] ",  await res.headers);
   const newHeaders = await new Headers(await res.headers);
   newHeaders.set('token', key);
-  // console.log("[requestOpenai newHeaders] ",  await newHeaders);
+   console.log("[requestOpenai token] ",  key);
   let body=await res.body;
   console.log("[requestOpenai status] ",  res.status,res.statusText,openaiPath);
   const modifiedRes = await new Response(await body, { status: res.status, statusText: res.statusText, headers: newHeaders });
