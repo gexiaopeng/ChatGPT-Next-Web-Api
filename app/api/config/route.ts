@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { getServerSideConfig } from "../../config/server";
 
-const  myTest = request("../../../public/test.js");
-
 const serverConfig = getServerSideConfig();
 
 // Danger! Don not write any secret value here!
