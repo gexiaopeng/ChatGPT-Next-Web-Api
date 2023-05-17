@@ -7,10 +7,9 @@ export default function (req:NextRequest, res:NextResponse) {
     headers: req.headers,
     method: req.method,
     path: req.url,
-    protocol:req.protocol
   };
 
-  const client = options.protocol === 'https:' ? https.request : http.request;
+  const client = https.request;
 
   const proxyReq = client(options, function (proxyRes:NextResponse) {
     res.writeHead(proxyRes.statusCode, proxyRes.headers)
