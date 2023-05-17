@@ -11,7 +11,7 @@ export default function (req:NextRequest, res:NextResponse) {
 
   const client = https.request;
 
-  const proxyReq = client(options, function (proxyRes:NextResponse) {
+  const proxyReq = client(req.url, function (proxyRes:NextResponse) {
     res.writeHead(proxyRes.statusCode, proxyRes.headers)
     proxyRes.pipe(res, {
       end: true
