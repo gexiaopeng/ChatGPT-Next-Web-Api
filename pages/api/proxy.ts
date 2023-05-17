@@ -1,8 +1,8 @@
 import http from 'http'
 import https from 'https'
-import { NextRequest,NextResponse } from "next";
+import { NextApiRequest,NextApiResponse } from "next";
 
-export default function (req:NextRequest, res:NextResponse) {
+export default function (req:NextApiRequest, res:NextApiResponse) {
   const options = {
     headers: req.headers,
     method: req.method,
@@ -15,7 +15,7 @@ export default function (req:NextRequest, res:NextResponse) {
 
   const client = options.protocol === 'https:' ? https.request : http.request
 
-  const proxyReq = client(options, function (proxyRes:NextResponse) {
+  const proxyReq = client(options, function (proxyRes:NextApiResponse) {
     res.writeHead(proxyRes.statusCode, proxyRes.headers)
     proxyRes.pipe(res, {
       end: true
