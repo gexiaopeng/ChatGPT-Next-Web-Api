@@ -4,10 +4,9 @@
   "private": false,
   "license": "Anti 996",
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
-    "api": "next api ./pages/api/proxy.ts"
+    "start": "cross-env NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@hello-pangea/dnd": "^16.2.0",
