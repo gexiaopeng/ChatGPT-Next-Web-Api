@@ -4,14 +4,16 @@ import { NextRequest,NextResponse } from "next/server";
 
 export default function (req:NextRequest, res:NextResponse) {
   const options =  {
-    headers: req.headers,
+    hostname: 'localhost',
+    port: req.port,
+    path: req.path,
     method: req.method,
-    path: req.url,
+    headers: req.headers,
   };
 
   const client = https.request;
 
-  const proxyReq = client(req.url, function (proxyRes:NextResponse) {
+  const proxyReq = client(req.url, function (proxyRes) {
     res.writeHead(proxyRes.statusCode, proxyRes.headers)
     proxyRes.pipe(res, {
       end: true
