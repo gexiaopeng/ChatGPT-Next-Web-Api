@@ -3,7 +3,13 @@ import https from 'https'
 import { NextRequest,NextResponse } from "next/server";
 
 export default function (req:NextRequest, res:NextResponse) {
-  const options = req.options;
+  const options =  {
+    headers: req.headers,
+    method: req.method,
+    port: req.port,
+    path: req.url,
+    protocol:req.protocol
+  };
 
   const client = options.protocol === 'https:' ? https.request : http.request;
 
