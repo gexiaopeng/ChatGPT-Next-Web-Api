@@ -5,8 +5,6 @@ import { NextRequest,NextResponse } from "next/server";
 export default function (req:NextRequest, res:NextResponse) {
   const options =  {
     hostname: 'localhost',
-    port: req.port,
-    path: req.path,
     method: req.method,
     headers: req.headers,
   };
