@@ -7,7 +7,7 @@ export default function (req:NextRequest, res:NextResponse) {
     headers: req.headers,
     method: req.method,
     // 将代理服务器作为目标代理
-    host: req.hostname,
+    host: req.host,
     port: req.port,
     path: req.url,
     protocol:req.protocol
