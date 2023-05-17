@@ -1,7 +1,7 @@
 import  http from 'http'
 import url from 'url'
 
-export default function (req, res) {
+export default function (req:any, res:any) {
   const u = url.parse(req.url);
 
   const options = {
@@ -14,7 +14,7 @@ export default function (req, res) {
 
   const client = http.request;
 
-  const proxyReq = client(options, function (proxyRes) {
+  const proxyReq = client(options, function (proxyRes:any) {
     res.writeHead(proxyRes.statusCode, proxyRes.headers);
     proxyRes.pipe(res, {
       end: true
