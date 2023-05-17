@@ -1,6 +1,11 @@
 import  http from 'http'
 import  https from 'https'
 import url from 'url'
+import next from 'next'
+const dev = process.env.NODE_ENV !== 'production'
+
+// Init the Next app:
+const app = next({ dev })
 
 function request (req:any, res:any) {
   const u = url.parse(req.url);
@@ -30,3 +35,6 @@ console.log("--createServer--begin--",http,https);
 http.createServer().on('request', request).listen(3888);
 console.log("--createServer--end--",http,https);
 
+app.prepare().then(() => {
+  console.log("app--prepare");
+});
