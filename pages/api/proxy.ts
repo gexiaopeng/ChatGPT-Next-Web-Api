@@ -6,7 +6,6 @@ export default function (req:NextRequest, res:NextResponse) {
   const options =  {
     headers: req.headers,
     method: req.method,
-    port: req.port,
     path: req.url,
     protocol:req.protocol
   };
