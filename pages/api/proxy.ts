@@ -1,6 +1,6 @@
 import http from 'http'
 import https from 'https'
-import { NextRequest,NextResponse } from "next/server";
+import { NextRequest,NextResponse } from "next";
 
 export default function (req:NextRequest, res:NextResponse) {
   const options = {
