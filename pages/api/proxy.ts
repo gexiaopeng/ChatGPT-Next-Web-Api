@@ -1,8 +1,11 @@
 import  http from 'http'
+import  https from 'https'
 import url from 'url'
 
 export default function (req:any, res:any) {
   const u = url.parse(req.url);
+  console.log("---proxy----url:",req.url);
+  const protocol=u.protocol;
 
   const options = {
     hostname : u.hostname,
@@ -12,7 +15,7 @@ export default function (req:any, res:any) {
     headers     : req.headers
   };
 
-  const client = http.request;
+  const client = protocol=== 'https:' ? https.request : http.reques
 
   const proxyReq = client(options, function (proxyRes:any) {
     res.writeHead(proxyRes.statusCode, proxyRes.headers);
