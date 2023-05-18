@@ -9,7 +9,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
   console.log("-method-"+method+",PROXY_API_URL:"+PROXY_API_URL+",url:"+req.url+",slug:"+slug!);
   // 创建中间件代理到外部 API
   const proxy = createProxyMiddleware({
-    target: `${slug!.join('/')}`,
+    target: `${slug!}`,
     changeOrigin: true,
     headers: { 'X-Custom-Header': 'Hello from Vercel' },
   });
