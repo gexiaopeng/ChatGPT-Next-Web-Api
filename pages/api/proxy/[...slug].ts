@@ -1,7 +1,7 @@
 
 import fetch from 'node-fetch';
-import { NextApiRequest, NextApiResponse } from 'next'
-export default async function handler(req:NextApiRequest, res:NextApiResponse) {
+
+export default async function handler(req:any, res:any) {
 
   const { method } = req;
   const { query } = req
