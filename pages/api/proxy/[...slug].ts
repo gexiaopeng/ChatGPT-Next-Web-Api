@@ -1,6 +1,7 @@
 import { createProxyMiddleware } from 'http-proxy-middleware';
+import { NextApiRequest, NextApiResponse } from 'next';
 import { NextRequest, NextResponse } from "next/server";
-export default async function handler(req:any, res:any) {
+export default async function handler(req:NextApiRequest, res:NextApiResponse) {
 
   const { method } = req;
   const { PROXY_API_URL } = process.env;
