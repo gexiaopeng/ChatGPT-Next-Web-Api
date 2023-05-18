@@ -4,11 +4,12 @@
   "private": false,
   "license": "Anti 996",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "node proxy-server.js",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production node server.js"
+    "start": "cross-env NODE_ENV=production node proxy-server.js"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "@hello-pangea/dnd": "^16.2.0",
     "@svgr/webpack": "^6.5.1",
     "@vercel/analytics": "^0.1.11",
