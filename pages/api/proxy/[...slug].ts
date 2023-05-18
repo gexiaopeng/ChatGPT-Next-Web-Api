@@ -22,7 +22,7 @@ export default async function handler(req:any, res:any) {
   const proxyResponseHeaders = await proxyResponse.headers;  // 获取响应头
   const proxyResponseBody = await proxyResponse.text();  // 获取响应体
   res.status(proxyResponse.status);
-  proxyResponseHeaders.forEach((name:any,value:any) => {
+  proxyResponseHeaders.forEach((value:any,name:any) => {
     res.setHeader(name, value);    // 设置响应头
   });
   res.send(proxyResponseBody);
