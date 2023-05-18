@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import { NextRequest, NextResponse } from "next/server";
-export default async function handler(req, res) {
+export default async function handler(req:any, res:any) {
   const { method } = req;
   const { PROXY_API_URL } = process.env;
   console.log("-method-"+method+",PROXY_API_URL:"+PROXY_API_URL+",url:"+req.url);
