@@ -1,7 +1,8 @@
 var http = require('http');
 var net = require('net');
 var url = require('url');
-var port = 3888;
+var port = parseInt(process.env.PORT, 10) || 3000
+console.log("--port--"+port);
 function request(cReq, cRes) {
     var murl = cReq.url;
     console.log("-request-url-" + murl);
