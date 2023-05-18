@@ -9,7 +9,7 @@ export default async function handler(req:any, res:any) {
   console.log("-method-"+method+",url:"+req.url+",slug:["+slug+"]");
   console.log("-query-",query);
   console.log("-res-",res);
-  const url=req.url.splice(11);
+  const url=req.url.slice(11);
 
   const proxyResponse:any = await fetch(url, {
     method,
