@@ -16,10 +16,14 @@ export default async function handler(req:any, res:any) {
     headers: req.headers,
     body: method.toLowerCase() === 'get' ? null : req.body,
   });
+
+
   //console.log("-proxyResponse-",await proxyResponse);
   const proxyResponseHeaders = await proxyResponse.headers;  // 获取响应头
   const proxyResponseBody = await proxyResponse.text();  // 获取响应体
-
-  // 将响应头和响应体一起返回
-  res.status(proxyResponse.status).set(proxyResponseHeaders).send(proxyResponseBody);
+  res.status(proxyResponse.status);
+  proxyResponseHeaders.forEach((name:any,value:any) => {
+    res.setHeader(name, value);    // 设置响应头
+  });
+  res.send(proxyResponseBody);
 }
