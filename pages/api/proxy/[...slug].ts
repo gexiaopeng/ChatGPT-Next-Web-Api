@@ -1,4 +1,4 @@
-import { createProxyMiddleware, ErrorRequestHandler, RequestHandler } from 'http-proxy-middleware';
+import { createProxyMiddleware, RequestHandler } from 'http-proxy-middleware';
 import { NextApiRequest, NextApiResponse } from 'next';
 type AsyncRequestHandler = (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
 export default async function handler(req:NextApiRequest, res:NextApiResponse) {
@@ -15,7 +15,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
   });
   const proxy: AsyncRequestHandler = (req, res) => {
     return new Promise<void>((resolve, reject) => {
-      const callback: ErrorRequestHandler = (err:any, req:any, res:any) => {
+      const callback: RequestHandler = (err:any, req:any, res:any) => {
         if (err) {
           reject(err);
         } else {
