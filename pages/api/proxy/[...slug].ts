@@ -15,12 +15,8 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
   });
   const proxy: AsyncRequestHandler = (req, res) => {
     return new Promise<void>((resolve, reject) => {
-      const callback: RequestHandler = (err:any, req:any, res:any) => {
-        if (err) {
-          reject(err);
-        } else {
+      const callback: RequestHandler = (req:any, res:any) => {
           resolve();
-        }
       };
       proxyMiddleware(req, res, callback);
     });
