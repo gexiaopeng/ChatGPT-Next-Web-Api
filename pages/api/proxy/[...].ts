@@ -14,7 +14,7 @@ export default async function handler(req: NextRequest) {
             body: req.body,
         });
     } catch (e) {
-        console.error("[api/proxy]", e);
+        console.error("[api/proxy]error", e);
         return NextResponse.json(
             {
                 error: true,
