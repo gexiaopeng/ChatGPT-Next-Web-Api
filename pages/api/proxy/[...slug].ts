@@ -1,7 +1,7 @@
 
 // @ts-ignore
 import fetch from 'node-fetch';
-import { NextRequest, NextResponse } from "next/server";
+import {NextResponse} from 'next/server;
 export default async function handler2(req:any, res:any) {
 
   const { method } = req;
@@ -31,11 +31,11 @@ export default async function handler2(req:any, res:any) {
   res.text(proxyResponseBody);
 }
 
-async function makeRequest(req: NextRequest) {
+async function makeRequest(req: any) {
   const { method } = req;
   const { query } = req
   const { slug } = query
-  console.log("-method-"+method+",url:"+req.url+",slug:["+slug+"]");
+  console.log("-makeRequest-method-"+method+",url:"+req.url+",slug:["+slug+"]");
   const url=req.url.slice(11);
   console.log("-url-["+url+"]");
   return NextResponse.json(
@@ -53,10 +53,10 @@ async function makeRequest(req: NextRequest) {
   );
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(req: any) {
   return makeRequest(req);
 }
 
-export async function GET(req: NextRequest) {
+export async function GET(req: any) {
   return makeRequest(req);
 }
