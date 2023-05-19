@@ -1,9 +1,9 @@
 
 import { NextRequest } from 'next/server';
 export default async function handler(req: NextRequest) {
-
   const { method } = req;
   console.log("-method-"+method+",url:["+req.url+"]");
+  console.log("-req-",req);
   //console.log("-query-",query);
   //console.log("-res-",res);
   const url="https://www.baidu.com";
