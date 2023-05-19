@@ -6,7 +6,7 @@ export default async function handler(req: NextRequest) {
   console.log("-req-",req);
   //console.log("-query-",query);
   //console.log("-res-",res);
-  const url="https://www.baidu.com";
+  const url="https:/www.baidu.com";
   console.log("-url-["+url+"]");
   return fetch(url, {
     headers: req.headers,
