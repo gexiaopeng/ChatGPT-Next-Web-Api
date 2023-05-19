@@ -27,5 +27,5 @@ export default async function handler(req:any, res:any) {
     res.setHeader(name, value);    // 设置响应头
   });
    */
-  res.send(proxyResponseBody);
+  res.text(proxyResponseBody);
 }
