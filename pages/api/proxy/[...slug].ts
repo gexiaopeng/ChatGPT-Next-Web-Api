@@ -3,12 +3,10 @@ import { NextRequest } from 'next/server';
 export default async function handler(req: NextRequest) {
 
   const { method } = req;
-  const { query } = req
-  const { slug } = query
-  console.log("-method-"+method+",url:"+req.url+",slug:["+slug+"]");
+  console.log("-method-"+method+",url:["+req.url+"]");
   //console.log("-query-",query);
   //console.log("-res-",res);
-  const url=req.url.slice(11);
+  const url="https://www.baidu.com";
   console.log("-url-["+url+"]");
   return await fetch(url, {
     method,
