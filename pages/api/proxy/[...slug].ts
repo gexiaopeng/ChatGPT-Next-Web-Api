@@ -1,7 +1,8 @@
 
+// @ts-ignore
 import fetch from 'node-fetch';
-
-export default async function handler(req:any, res:any) {
+import { NextRequest, NextResponse } from "next/server";
+export default async function handler2(req:any, res:any) {
 
   const { method } = req;
   const { query } = req
@@ -28,4 +29,34 @@ export default async function handler(req:any, res:any) {
   });
    */
   res.text(proxyResponseBody);
+}
+
+async function makeRequest(req: NextRequest) {
+  const { method } = req;
+  const { query } = req
+  const { slug } = query
+  console.log("-method-"+method+",url:"+req.url+",slug:["+slug+"]");
+  const url=req.url.slice(11);
+  console.log("-url-["+url+"]");
+  return NextResponse.json(
+      {
+        error: {
+          message: "JSON.stringify(e)",
+          type: "Internal server errorr",
+          param: null,
+          code: "internal_error"
+        }
+      },
+      {
+        status: 500,
+      }
+  );
+}
+
+export async function POST(req: NextRequest) {
+  return makeRequest(req);
+}
+
+export async function GET(req: NextRequest) {
+  return makeRequest(req);
 }
