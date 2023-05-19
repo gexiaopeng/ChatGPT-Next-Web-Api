@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+
 import { NextRequest } from 'next/server';
 export default async function handler(req: NextRequest) {
 
@@ -8,9 +8,10 @@ export default async function handler(req: NextRequest) {
   //console.log("-res-",res);
   const url="https://www.baidu.com";
   console.log("-url-["+url+"]");
-  return await fetch(url, {
-    method,
-    headers: req.headers
+  return fetch(url, {
+    headers: req.headers,
+    method:method,
+    body: req.body,
   });
 
 }
