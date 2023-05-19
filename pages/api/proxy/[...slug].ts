@@ -10,8 +10,7 @@ export default async function handler(req: NextRequest) {
   console.log("-url-["+url+"]");
   return await fetch(url, {
     method,
-    headers: req.headers,
-    body: method.toLowerCase() === 'get' ? null : req.body,
+    headers: req.headers
   });
 
 }
