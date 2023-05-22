@@ -6,6 +6,11 @@ console.log("--port--"+port);
 function request(cReq, cRes) {
     var murl = cReq.url;
     console.log("-request-url-" + murl);
+    if(murl==null || murl=="undefined" || murl.startsWith("/")){
+        cRes.statusCode = 404 ;
+        cRes.end();
+        return;
+    }
     var u = url.parse(murl);
     var options = {
         hostname: u.hostname,
