@@ -6,10 +6,12 @@ export default async function handler(req: NextRequest) {
     //console.log("-query-",query);
     //console.log("-res-",res);
     const url = `${req.nextUrl.pathname}${req.nextUrl.search}`.replaceAll("/api/proxy/", "");
-    console.log("-url-[" + url + "]");
+    const newHeaders =  new Headers( req.headers);
+    newHeaders.delete('host');
+    console.log("-url-[" + url + "],newHeaders:",newHeaders);
     try {
         return fetch(url, {
-            headers: req.headers,
+            headers: newHeaders,
             method: method,
             body: req.body,
         });

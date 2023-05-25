@@ -5,10 +5,12 @@ export default async function handler(req: NextRequest) {
     console.log("-method-" + method + ",url:[" + req.url + "]");
     const url = `${req.nextUrl.pathname}${req.nextUrl.search}`.replaceAll("/api/openai/", "");
     const ourl="https://api.openai.com/"+url;
-    console.log("-url-[" + ourl + "]");
+    const newHeaders =  new Headers( req.headers);
+    newHeaders.delete('host');
+    console.log("-url-[" + ourl + "],newHeaders:",newHeaders);
     try {
         return fetch(ourl, {
-            headers: req.headers,
+            headers: newHeaders,
             method: method,
             body: req.body,
         });
