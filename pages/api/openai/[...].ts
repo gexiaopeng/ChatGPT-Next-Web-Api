@@ -12,7 +12,7 @@ export default async function handler(req: NextRequest) {
     for (const [key, value] of newHeaders.entries()) {
         heads+=key+":"+value+"\n";
     }
-    console.log("-heads-[" + heads + "]");
+    //console.log("-heads-[" + heads + "]");
     try {
         return fetch(ourl, {
             headers: newHeaders,

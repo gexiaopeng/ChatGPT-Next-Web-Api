@@ -8,7 +8,7 @@ export default async function handler(req: NextRequest) {
     const url = `${req.nextUrl.pathname}${req.nextUrl.search}`.replaceAll("/api/proxy/", "");
     const newHeaders =  new Headers( req.headers);
     newHeaders.delete('host');
-    console.log("-url-[" + url + "],newHeaders:",newHeaders);
+    console.log("-url-[" + url + "]");
     try {
         return fetch(url, {
             headers: newHeaders,
