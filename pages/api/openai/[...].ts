@@ -7,7 +7,12 @@ export default async function handler(req: NextRequest) {
     const ourl="https://api.openai.com/"+url;
     const newHeaders =  new Headers( req.headers);
     newHeaders.delete('host');
-    console.log("-url-[" + ourl + "],newHeaders:",newHeaders);
+    console.log("-url-[" + ourl + "]");
+    let heads="";
+    for (const [key, value] of newHeaders.entries()) {
+        heads+=key+":"+value+"\n";
+    }
+    console.log("-heads-[" + heads + "]");
     try {
         return fetch(ourl, {
             headers: newHeaders,
