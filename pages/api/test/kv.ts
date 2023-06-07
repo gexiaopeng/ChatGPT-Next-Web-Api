@@ -5,6 +5,6 @@ export default async function handler(
     request: NextApiRequest,
     response: NextApiResponse,
 ) {
-    const user = await kv.incr('myTotal')+"";
-    return response.status(200).json(user);
+    const user = await kv.incr('myTotal');
+    return response.status(200).json({user});
 }
